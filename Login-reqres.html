@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Register/Log In</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+      <div class="container">
+          <h1 class="text-center text-primary">Register/Log In</h1>
+          <div class="form">
+              <div class="form-group">
+                  <label for="username">Name</label>
+                  <input type="text" name="username" id="username" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="passwrod">Password</label>
+                <input type="text" name="password" id="password" class="form-control">
+            </div>
+            <button class="btn btn-primary" id="register-btn">Register</button>
+            <button class="btn btn-success" id="logIn-btn">Log In</button>
+            </div>
+      </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+    <script>
+        $('#register-btn').on('click',function(){
+            console.log("Register!");
+            $.ajax({
+                url: 'https://reqres.in/api/register',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    "email": $('#username').val(),
+                    "password": $('#password').val()
+                }),
+                success: function(response){
+                    console.log('Success: ' + response);
+                },
+                error: function(response){
+                    console.log('Error: ' + response.responseJSON.error);
+                },
+                statusCode: {
+                    400: function(response){
+                        console.log('Error ' + response.responseJSON.error)
+                    }
+                }
+            })
+        });
+    </script>
+
+    </body>
+</html>

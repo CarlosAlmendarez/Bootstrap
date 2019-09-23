@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <link rel="stylesheet" href="boostrap.css">
+  <body>
+      <div class="container">
+          <h1 class="text-center text-primary">Modal</h1>
+          <button class="btn btn-success" data-target="#myModal" data-toggle="modal">Open Modal</button>
+      </div>
+
+      <div class="modal" id="myModal">
+        <div class="modal-dialog">  
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title">
+                        <h5>Modal Title</h5>
+                    </div>
+                    <button class="btn close" data-dismiss="modal">X</button>
+                </div>
+                <div class="modal-body">
+                    Username:
+                    <input type="text" name="username" id="userModal">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-success" id="modal-Accept">Accept</button>
+                </div>
+            </div>
+        </div>
+      </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="bootstrap.js"></script>
+
+    <script>
+            $('#modal-Accept').click(function(){
+                $('#myModal').modal('hide');
+                console.log("Username:" + $('#userModal').val() + " Accepted!");
+            });
+        </script>
+</body>
+</html>
